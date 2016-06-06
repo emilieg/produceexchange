@@ -1,0 +1,26 @@
+{
+  "name": "scmanager",
+  "version": "1.0.0",
+  "description": "A system to manage your sound cloud tracks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilieg/scmanager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilieg/scmanager/issues"
+  },
+  "homepage": "https://github.com/emilieg/scmanager#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "pg": "^4.5.6",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.3"
+  }
+}
