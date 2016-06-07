@@ -1,5 +1,4 @@
-//all of the controllers go here
-'use strict';
+// 'use strict';
 
 /* Controllers */
 
@@ -58,15 +57,17 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
     };
   }]);
 
-
-photoAlbumControllers.controller('PostCtrl', function() {
-
-});
-
-photoAlbumControllers.controller('HomeCtrl', function() {
+var scmanagerApp = angular.module('scmanagerApp')
+scmanagerApp.controller('PostCtrl', function() {
 
 });
 
-photoAlbumControllers.controller('AllPostCtrl', function() {
+scmanagerApp.controller('HomeCtrl', function() {
 
 });
+
+scmanagerApp.controller('AllPostCtrl', ['$q', '$rootScope', 'album', function($q, $rootScope, album) {
+
+
+}]);
+

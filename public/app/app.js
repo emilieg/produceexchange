@@ -6,7 +6,7 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   'photoAlbumControllers',
   'photoAlbumServices'])
 
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
@@ -31,7 +31,9 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   })
 
 
+  $locationProvider.html5Mode({enabled: true})
 }])
+
 
 .config(['cloudinaryProvider', function (cloudinaryProvider) {
   cloudinaryProvider
