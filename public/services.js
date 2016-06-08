@@ -12,6 +12,17 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
     return $resource(url, {}, {
       photos: {method:'GET', isArray:false}
     });
-  }]);
+  }])
 
 //looks like this service retrieves the pictures from cloudinary
+
+
+.factory('PostsAPI', ['$resource', function($resource) {
+  return $resource('/api/post');
+}])
+
+.factory('AllPosts', ['$resource', function($resource) {
+  return $resource('/api/allposts')
+}])
+
+

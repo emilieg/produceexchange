@@ -2,11 +2,11 @@
 
 /* Controllers */
 
-var photoAlbumControllers = angular.module('photoAlbumControllers', ['ngFileUpload']);
+var photoAlbumControllers = angular.module('photoAlbumControllers',  ['ngFileUpload', 'photoAlbumServices']);
 
-photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary',
+photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', 'PostsAPI', 'AllPosts',
   /* Uploading with Angular File Upload */
-  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary) {
+  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary, PostsAPI) {
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {
@@ -31,6 +31,10 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
             data.context = {custom: {photo: $scope.title}};
             file.result = data;
             $rootScope.photos.push(data);
+            $scope.fileUrl = file.result.secure_url;
+            $scope.public_id = file.result.public_id;
+            console.log("Secure_url: " + file.result.secure_url);
+            console.log("Public_id: " + file.result.public_id);
           }).error(function (data, status, headers, config) {
             file.result = data;
           });
@@ -55,19 +59,47 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       }
       return hasFile ? "dragover" : "dragover-err";
     };
+
+    $scope.post = {
+      title: '',
+      description: '',
+      contact_name: '',
+      email: '',
+      public_id: '',
+      secure_url: ''
+    };
+
+    $scope.submitPost = function (){
+      var newPost = {
+        title: $scope.post.title, 
+        description: $scope.post.description, 
+        contact_name: $scope.post.contact_name, 
+        email: $scope.post.email, 
+        public_id: $scope.public_id, 
+        secure_url: $scope.fileUrl,
+      };
+      console.log("newPost: ", newPost);
+
+      PostsAPI.save(newPost, function success(data) {
+        console.log(data);
+      }, function error(data) {
+        console.log(data);
+      });
+    }
+
   }]);
 
-var scmanagerApp = angular.module('scmanagerApp')
-scmanagerApp.controller('PostCtrl', function() {
 
-});
+
+var scmanagerApp = angular.module('scmanagerApp')
 
 scmanagerApp.controller('HomeCtrl', function() {
-
 });
 
-scmanagerApp.controller('AllPostCtrl', ['$q', '$rootScope', 'album', function($q, $rootScope, album) {
-
+scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', 'album', '$stateParams', 'AllPosts', function($q, $scope, album, $stateParams, AllPosts ) {
+  AllPosts.query(function success(data) {
+    $scope.posts = data;
+  }, function error(data) {
+  })
 
 }]);
-
