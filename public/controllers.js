@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var photoAlbumControllers = angular.module('photoAlbumControllers',  ['ngFileUpload', 'photoAlbumServices']);
+var photoAlbumControllers = angular.module('photoAlbumControllers',  ['ngFileUpload', 'photoAlbumServices', 'ngAnimate', 'ui.bootstrap']);
 
 photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$routeParams', '$location', 'Upload', 'cloudinary', 'PostsAPI', 'AllPosts',
   /* Uploading with Angular File Upload */
@@ -81,7 +81,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope', '$rootScope', '$r
       console.log("newPost: ", newPost);
 
       PostsAPI.save(newPost, function success(data) {
-        console.log(data);
+        $location.path('/allposts');
       }, function error(data) {
         console.log(data);
       });
@@ -96,14 +96,29 @@ var scmanagerApp = angular.module('scmanagerApp')
 scmanagerApp.controller('HomeCtrl', function() {
 });
 
-scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', 'album', '$stateParams', 'AllPosts', 'AllPostsDelete', function($q, $scope, album, $stateParams, AllPosts, AllPostsDelete ) {
+scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', '$stateParams', 'AllPosts', 'AllPostsDelete',
+                                function($q, $scope, $stateParams, AllPosts, AllPostsDelete ) {
   AllPosts.query(function success(data) {
     $scope.posts = data;
+    
+    $scope.myInterval = 3000;
+    $scope.noWrapSlides= false;
+    $scope.active = 0;
+    var currIndex = 0;
+    $scope.slides = [];
+    for (var i=0; i < $scope.posts.length; i ++) {
+      if ($scope.posts[i].secure_url) {
+        $scope.slides.push({image: $scope.posts[i].secure_url, id: currIndex++, title: $scope.posts[i].title,
+          email: $scope.posts[i].email, post_id: $scope.posts[i]._id, description: $scope.posts[i].description})
+      }
+    }
   }, function error(data) {
+    console.log(data);
   })
 
   $scope.claim = function(id, postIdx) {
     AllPostsDelete.delete({id: id}, function success(data){
+      console.log("postIdx is: ", postIdx);
       console.log(data)
       $scope.posts.splice(postIdx, 1);
     }, function error(data) {
@@ -111,6 +126,9 @@ scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', 'album', '$stateParams',
     })
   }
 
+
 }]);
+
+
 
 

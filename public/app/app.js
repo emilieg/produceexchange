@@ -4,7 +4,8 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   'ngRoute',
   'cloudinary',
   'photoAlbumControllers',
-  'photoAlbumServices'])
+  'photoAlbumServices',
+  'ngAnimate'])
 
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
