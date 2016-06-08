@@ -23,9 +23,17 @@ router.route('/')
       if(err) return res.status(500).send(err);
       res.send(posts);
     })
-  })  
+  });
 
 
+router.route('/:id')
+ .delete(function(req, res) {
+    Post.findByIdAndRemove(req.params.id, function(err) {
+      if (err) return res.status(500).send(err);
+      res.send({'message': 'success'});
+      console.log(req.params.id);
+    });
+  });
 
 
 

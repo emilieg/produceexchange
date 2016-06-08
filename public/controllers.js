@@ -96,10 +96,21 @@ var scmanagerApp = angular.module('scmanagerApp')
 scmanagerApp.controller('HomeCtrl', function() {
 });
 
-scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', 'album', '$stateParams', 'AllPosts', function($q, $scope, album, $stateParams, AllPosts ) {
+scmanagerApp.controller('AllPostCtrl', ['$q', '$scope', 'album', '$stateParams', 'AllPosts', 'AllPostsDelete', function($q, $scope, album, $stateParams, AllPosts, AllPostsDelete ) {
   AllPosts.query(function success(data) {
     $scope.posts = data;
   }, function error(data) {
   })
 
+  $scope.claim = function(id, postIdx) {
+    AllPostsDelete.delete({id: id}, function success(data){
+      console.log(data)
+      $scope.posts.splice(postIdx, 1);
+    }, function error(data) {
+
+    })
+  }
+
 }]);
+
+

@@ -25,4 +25,8 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
   return $resource('/api/allposts')
 }])
 
+.factory('AllPostsDelete', ['$resource', function($resource) {
+  return $resource('/api/allposts/:id', {id: '@id'} 
+  )
+}])
 

@@ -8,7 +8,7 @@
   <h2>{{post.title}}</h2>
   <p>{{post.description}}</p> 
   <img ng-src="{{post.secure_url}}" alt="picture of post" class="thumbnail inline" width="200" height="200" crop="fit" quality="80" format="jpg"/>
-  <button type="button" class="btn btn-warning" ng-click="claim(post_id, $index)">CLAIM</button>
+  <button type="button" class="btn btn-warning" ng-click="claim(post._id, $index)">CLAIM</button>
 </div>
 
   <!-- <div style="height: 305px">
