@@ -1,8 +1,75 @@
 .background {
   background-image: url("../images/produce.jpg");
+  background-repeat:no-repeat;
+  height: 100vh;
+  /*text-align: center;*/
+}
+
+
+h1 {
+  color:white;
+}
+
+.row {
+  margin: 0 auto;
+}
+
+@media (max-width:768px) {
+  .background {
+    margin: 1vh;
+    background-image: none;
+  }
+  .btn-lg {
+    padding:2px 4px;
+    font-size:80%;
+    line-height: 1;
+    border-radius:3px;
+
+  }
+  .sidebar {
+    display: none;
+  }
+}
+
+
+.sidebar {
+  z-index: 1000;
+  display: block;
+  background-color: #d7ec6c;
   height: 100vh;
 }
 
-h1 {
-  color:red;
+.nav-sidebar > li a{
+  margin-top: 200px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.nav-sidebar > li button {
+  box-shadow: 5px 5px 10px #97a337;
+}
+
+
+.site-info {
+  background-color: #ffffff;
+  opacity: 0.6;
+  font-weight: bold;
+
+}
+
+.page-header {
+  text-align: center;
+}
+
+.cta {
+  text-align: center;
+}
+
+.cta-btn {
+  margin-top: 80px;
+  margin-right: 15px;
+  margin-left: 15px;
+  border: 1px solid #ffffff;
+
+/*  box-shadow: 5px 5px 10px #ffffff;*/
 }

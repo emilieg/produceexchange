@@ -102,7 +102,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
   }]);
 
 
-
 var scmanagerApp = angular.module('scmanagerApp')
 
 scmanagerApp.controller('HomeCtrl', function() {
@@ -117,15 +116,15 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
                                         'AllPostsDelete',
                                         'FindPost',
   function($q, $scope, $stateParams, $routeParams, AllPosts, AllPostsDelete, FindPost ) {
+    console.log("query:", $stateParams.query);
+    $scope.searchTerm = ''
+    if ($stateParams.query)  {
+      $scope.searchTerm = $stateParams.query
+    }
+
     AllPosts.query(function success(data) {
       $scope.posts = data;
-      // $scope.displayAll = true;
-      // $scope.displaySearch = false;
       console.log("$scope.posts", $scope.posts);
-      // $scope.myInterval = 3000;
-      // $scope.noWrapSlides= false;
-      // $scope.active = 0;
-      // $scope.currIndex = 0;
       $scope.slides = [];
       for (var i=0; i < $scope.posts.length; i ++) {
         if ($scope.posts[i].secure_url) {
@@ -152,29 +151,6 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
     })
   }
 
-  $scope.searchTerm = '';
-
-    // $scope.searchPost = function(searchTerm){
-    //   FindPost.query({id: searchTerm}, function success(data){
-    //     console.log("success data: ", data);
-    //     for (var i = 0; i < data.length; i++){
-    //       $scope.title = data[i].title;
-    //       $scope.description = data[i].description;
-    //       $scope.contact_name = data[i].contact_name;
-    //       $scope.email = data[i].email;
-    //       $scope.public_id = data[i].public_id;
-    //       $scope.secure_url = data[i].secure_url;
-    //       $scope.id = data[i]._id;
-    //       console.log("$scope.id) ", $scope.id);
-    //     };
-    //     $scope.displaySearch = true;
-    //     $scope.displayAll = false;
-
-    //   }, function error(data){
-    //     console.log("error data: ", data);
-    //   })
-    // }
-
     $scope.matchesSearch = function(value, index, array) {
       if ($scope.searchTerm === '') {;
         return true;
@@ -188,4 +164,8 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
 
 }]);
 
-
+scmanagerApp.controller('NavCtrl', ['$scope', '$state', function($scope, $state) {
+  $scope.searchPost = function(term) {
+    $state.go('allposts', {query: term})
+  }
+}]);

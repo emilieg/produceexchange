@@ -1,24 +1,14 @@
+<div class="row">
+  <div class="col-xs-12 col-md-12">
 
-<h1>POSTS</h1>
-<p>Search for posts here</p>
 
-<form ng-submit="searchPost(searchTerm)">
-    <div class="form-group">
-       <h4>Enter search term</h4>
-       <input type="text" ng-model="searchTerm">
-       <button class="btn btn-primary" type="submit"> Submit </button>
-    </div>   
-</form> 
-
-<p>
-  All of the Posts should appear here.
-</p>
-
- <div ng-repeat="post in posts | filter: matchesSearch track by post._id" >
-            <h2>{{post.title}}</h2>
-            <p>{{post.description}}</p> 
-            <img ng-src="{{post.secure_url}}" alt="picture of post" class="thumbnail inline" width="200" height="200" crop="fit" quality="80" format="jpg"/>
-            <a href="mailto:{{post.email}}?Subject={{post.title}}" target="_top"><button type="button" class="btn btn-warning" ng-click="claim(post._id, $index, post)">CLAIM</button></a>
- </div>
+     <div ng-repeat="post in posts | filter: matchesSearch track by post._id" >
+                <h2>{{post.title}}</h2>
+                <p>{{post.description}}</p> 
+                <img ng-src="{{post.secure_url}}" alt="picture of post" class="thumbnail inline" width="200" height="200" crop="fit" quality="80" format="jpg"/>
+                <a href="mailto:{{post.email}}?Subject={{post.title}}" target="_top"><button type="button" class="btn btn-warning" ng-click="claim(post._id, $index, post)">CLAIM</button></a>
+     </div>
+  </div>
+</div>
 
 

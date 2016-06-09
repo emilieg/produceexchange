@@ -26,7 +26,7 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
     controller: 'photoUploadCtrl',
   })
   .state('allposts', {
-    url: '/allposts',
+    url: '/allposts?q=:query',
     templateUrl: '/app/views/allposts.html',
     controller: 'AllPostCtrl',
   })
