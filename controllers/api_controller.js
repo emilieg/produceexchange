@@ -10,6 +10,7 @@ router.route('/')
   .post(function(req, res) {
     console.log("req: ", req.body);
     Post.create(req.body, function(err, mypost) {
+      console.log(err)
       console.log("mypost: "+ mypost);
       if (err) return res.status(500).send(err);
       res.send(mypost);

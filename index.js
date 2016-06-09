@@ -7,7 +7,10 @@ var mongoose = require('mongoose');
 var Post = require('./models/post');
 
 
-mongoose.connect('mongodb://localhost/produce');
+mongoose.connect('mongodb://'+process.env.MONGO_USER+':'+process.env.MONGO_PASS+'@ds011314.mlab.com:11314/produce');
+// mongoose.connect('mongodb://localhost/dbname');
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
