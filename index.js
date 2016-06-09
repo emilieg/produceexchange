@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 var Post = require('./models/post');
 
 
-mongoose.connect('mongodb://'+process.env.MONGO_USER+':'+process.env.MONGO_PASS+'@ds011314.mlab.com:11314/produce');
-// mongoose.connect('mongodb://localhost/dbname');
+// mongoose.connect('mongodb://'+process.env.MONGO_USER+':'+process.env.MONGO_PASS+'@ds011314.mlab.com:11314/produce');
+mongoose.connect('mongodb://localhost/produce');
 
 
 app.use(bodyParser.json());

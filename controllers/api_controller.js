@@ -26,7 +26,6 @@ router.route('/')
     })
   });
 
-
 router.route('/:id')
  .delete(function(req, res) {
     Post.findByIdAndRemove(req.params.id, function(err) {
@@ -35,6 +34,15 @@ router.route('/:id')
       console.log(req.params.id);
     });
   });
+
+ router.route('/:id/search')
+   .get(function(req, res) {
+      Post.find({title: req.params.id}, function(err, post) {
+        if (err) return res.status(500).send(err);
+        console.log("post: ", post);
+        res.send(post);
+      });
+  })
 
 
 

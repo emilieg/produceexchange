@@ -30,3 +30,9 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
   )
 }])
 
+.factory('FindPost', ['$resource', function($resource){
+  return $resource('/api/allposts/:id/search', {id: '@id'}, {
+    query:  {method:'GET', params: {id: '@id'}, isArray:true}
+  });
+}])
+

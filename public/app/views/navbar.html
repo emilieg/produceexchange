@@ -1,0 +1,13 @@
+  <md-content class="md-padding">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+      <md-nav-item md-nav-click="goto('page1')" name="home" ui-sref="home">Home</md-nav-item>
+      <md-nav-item md-nav-click="goto('page2')" name="about" ui-sref="about">About</md-nav-item>
+      <md-nav-item md-nav-click="goto('page3')" name="post" ui-sref="post">Post</md-nav-item>
+      <md-nav-item md-nav-click="goto('page3')" name="produce" ui-sref="allposts">Produce</md-nav-item>
+      <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo -->
+<!--       <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
+      <md-nav-item md-nav-href="#post" name="page5">Page Five</md-nav-item> -->
+     
+    </md-nav-bar>
+    <span>{{currentNavItem}}</span>
+  </md-content>
