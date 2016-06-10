@@ -2,12 +2,14 @@
   background-image: url("../images/produce.jpg");
   background-repeat:no-repeat;
   height: 100vh;
+  background-position: center;
 }
 
 .home-header {
   color:white;
   font-family: 'Pacifico', cursive;
-  font-size: 50px; 
+  font-size: 70px;  
+  text-shadow: #444 3px 3px 6px;
 }
 
 .row {
@@ -55,6 +57,12 @@
   font-family: 'Pacifico', cursive;
 }
 
+.nav>li>a:focus, .nav>li>a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+
+}
+
 a {
   color: #555;
 }
@@ -93,7 +101,8 @@ a {
 .post-submit {
   margin-top: 50px; 
   float: right;
-  background-color: #d7ec6c;
+  background-color: #d7ec6c;  
+  box-shadow: #444 1px 1px 1px;
 }
 
 .glyphicon-cloud-upload {
@@ -102,7 +111,7 @@ a {
 }
 
 .preview {
-  height: 350px;
+/*  height: 350px;*/
 }
 
 .input-group {
