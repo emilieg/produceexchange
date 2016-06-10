@@ -25,7 +25,11 @@ Wireframes:
 5. run mongod 
 6. localhost:3000
 
-# Known Issues:
+# Known Issues/Future Features
 - posts can be deleted without confirmatin
 - currently no email validation on form
+- add authentication to create a post
+- implement internal email client (i.e. Mailgun)
+- add Google Maps to filter items by location
+- add error message when nothing is returned from the search
 
