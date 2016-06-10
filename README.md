@@ -17,6 +17,12 @@ I wanted to solve a problem that I encounter every summer. My garden always seem
 and I am always looking to share tons of artichokes, blueberries and grapes. 
 Wireframes: 
 
+# Wireframes:
+# Screenshots:
+
+![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583662/Screen_Shot_2016-06-10_at_9.38.30_AM_clc5wl.png "Logo Title Text 1")
+
+
 # Install Instructions:
 1. npm install
 2. in index.js change mongoose.connect to point to your local db
