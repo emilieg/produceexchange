@@ -2,12 +2,12 @@
   background-image: url("../images/produce.jpg");
   background-repeat:no-repeat;
   height: 100vh;
-  /*text-align: center;*/
 }
 
-
-h1 {
+.home-header {
   color:white;
+  font-family: 'Pacifico', cursive;
+  font-size: 50px; 
 }
 
 .row {
@@ -31,7 +31,6 @@ h1 {
   }
 }
 
-
 .sidebar {
   z-index: 1000;
   display: block;
@@ -49,7 +48,16 @@ h1 {
   box-shadow: 5px 5px 10px #97a337;
 }
 
+/*top nav bar*/
+.navbar-brand {
+  color: #a4c917;
+  font-size: 35px;
+  font-family: 'Pacifico', cursive;
+}
 
+a {
+  color: #555;
+}
 .site-info {
   background-color: #ffffff;
   opacity: 0.6;
@@ -70,6 +78,43 @@ h1 {
   margin-right: 15px;
   margin-left: 15px;
   border: 1px solid #ffffff;
-
 /*  box-shadow: 5px 5px 10px #ffffff;*/
+}
+
+/*POST PAGE - INPUT FIELDS*/
+.preview-img {
+  display: block;
+  max-width:230px;
+  max-height:95px;
+  width: auto;
+  height: auto;
+}
+
+.post-submit {
+  margin-top: 50px; 
+  float: right;
+  background-color: #d7ec6c;
+}
+
+.glyphicon-cloud-upload {
+  font-size: 3vh;
+  font-weight: 200;
+}
+
+.preview {
+  height: 350px;
+}
+
+.input-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*Harvest page*/
+.harvest-img {
+  display: block;
+  max-width:350px;
+  /*max-height:95px;*/
+  width: auto;
+  height: auto;
 }

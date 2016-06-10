@@ -1,46 +1,63 @@
-<!-- Form with input Fields(Post title, description, contact name, email) -->
-<div class="input-group">
-   <form ng-submit="submitPost()">
-    <div class="form-group">
-       <h4>Title</h4>
-       <input type="text" ng-model="post.title">
-       <h4>Description</h4>
-       <textarea type="text" ng-model="post.description"></textarea>
-       <h4>Contact Name</h4>
-       <input type="text" ng-model="post.contact_name">
-       <h4>Email</h4>
-       <input type="text" ng-model="post.email">
-       <button class="btn btn-primary" type="submit"> Submit </button>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <h1 class="page-header">Share your harvest</h1>
+  </div>
+  <!-- <div class="col-xs-12 col-md-4 col-md-4-offset-3"> -->
+  <div class="col-md-4 col-md-offset-4">
+    <!-- Form with input Fields(Post title, description, contact name, email) -->
+    <!-- <div class="input-group input-group-lg"> -->
+    <form ng-submit="submitPost()">
+      <label class="control-label">Title</label>
+      <div class=" input-group"> 
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        <input type="text" ng-model="post.title" class="form-control" placeholder="post title">
+      </div>
+      <label>Description</label> 
+      <div class="input-group">  
+       <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
+       <textarea type="text" ng-model="post.description" class="form-control"></textarea>
+     </div>
+     <label>Contact Name</label>
+     <div class="input-group">    
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input type="text" ng-model="post.contact_name" class="form-control">
+    </div>
+    <label>Email</label>
+    <div class="input-group">    
+      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+      <input type="text" ng-model="post.email" class="form-control">
     </div>   
-   </form> 
+    <!--  <button class="btn btn-primary submit post-submit" type="submit"> Submit </button> -->
+    <!-- </form> -->
+    <!--   </div>  -->
 
-<!-- This is the file upload  -->
-<div id="direct_upload" 
+    <!-- This is the file upload  -->
+    <!-- <div class="col-xs-12 col-md-6"> -->
+    <!-- <div class="input-group input-group-lg"> -->
+  <div id="direct_upload" 
     ngf-drop="uploadFiles($files)"
     ngf-drag-over-class="dragOverClass($event)"
     ng-model="files"
     ng-multiple="true">
-    <h4>Upload a picture</h4>
-    <form>
-        <div class="form_line">
-            <div class="form_controls">
-                <div class="upload_button_holder">
-                    <button href="#" class="btn btn-success" ngf-select="uploadFiles($files)" multiple title="upload" resetOnClick="true"> Upload </button>
-                </div>               
-            </div>
-        </div>
-    </form>
+    <label>Upload a picture</label>
+    <div class="input-group">
+      <a href="#" ngf-select="uploadFiles($files)" multiple title="upload" resetOnClick="true"> <span class=""><i class="glyphicon glyphicon-cloud-upload"></i></span></a>
+    </div>               
     <div class="file" ng-repeat="file in files">
-        <h3>{{file.name}} {{f.$error}} {{f.$errorParam}}</h3>
+        <h5>{{file.name}} {{f.$error}} {{f.$errorParam}}</h5>
         <div class="status">{{file.status}}</div>
         <div class="progress-bar">
           <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
         </div>
-          <div class="preview">
-              <img ngf-src="file.result.url || file" width="150" height="150">
-          </div>
+        <label>Preview:</label>
+        <div class="preview">
+          <img class="preview-img" ngf-src="file.result.url || file">
+        </div>
     </div>
+  </div>
+  <button class="btn btn-lg submit post-submit " type="submit"> Submit </button>
+</form>
 </div>
+<!-- </div> -->
 </div>
-
 
