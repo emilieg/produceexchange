@@ -19,9 +19,11 @@ And finally I deployed to Heroku using mLab as my database service.
 
  # Wireframes & User Story: 
  I wanted to solve a problem that I encounter every summer. My garden always seems to grow too much of one thing and I'm always looking to share and trade my artichokes, blueberries and grapes. 
- Wireframe: https://ninjamock.com/s/TSWFD
+
 
 # Wireframes:
+
+https://ninjamock.com/s/TSWFD
 # Screenshots:
 
 ![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583662/Screen_Shot_2016-06-10_at_9.38.30_AM_clc5wl.png "Landing page")
