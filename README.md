@@ -5,11 +5,11 @@ A community based application that helps neighbors trade homegrown fruits and ve
 
 
 # Technology:
-MEAN stack application utilizing: 
-Mongo db and Mongoose
-Express
-Angular 
-Node.js
+_MEAN stack application utilizing_: 
+* *Mongo* and *Mongoose*, database 
+* *Express*, back-end app
+* *Angular*, front-end framework 
+* *Node.js*, server
 
 
 # General approach :
@@ -39,10 +39,10 @@ https://ninjamock.com/s/TSWFD
 6. localhost:3000
 
 # Known Issues/Future Features
-- posts can be deleted without confirmatin
-- currently no email validation on form
-- add authentication to create a post
-- implement internal email client (i.e. Mailgun)
-- add Google Maps to filter items by location
-- add error message when nothing is returned from the search
+* posts can be deleted without confirmatin
+* currently no email validation on form
+* add authentication to create a post
+* implement internal email client (i.e. Mailgun)
+* add Google Maps to filter items by location
+* add error message when nothing is returned from the search
 
