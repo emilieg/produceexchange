@@ -10,10 +10,10 @@ A community based application that helps neighbors trade homegrown fruits and ve
 
 # Technology:
 MEAN stack application utilizing: 
-Mongo db and Mongoose
-Express
-Angular 
-Node.js
+* *Mongo* and *Mongoose*, database 
+* *Express*, back-end app
+* *Angular*, front-end framework 
+* *Node.js*, server
 
 
 # General approach :
