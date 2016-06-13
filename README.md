@@ -13,9 +13,13 @@ Node.js
 
 
 # General approach :
-I wanted to solve a problem that I encounter every summer. My garden always seems to grow too much of one thing
-and I am always looking to share tons of artichokes, blueberries and grapes. 
-Wireframes: 
+I started by creating wireframes and the user story. After the user story was finished I build the basic skeleton of the app using Node.js and installed and imported all needed dependencies/modules (Express, Router, bodyParser, path, Mongoose and Angular). After I tested that Angular and all other dependencies were working I proceeded to integrate the Cloudinary API (to upload pictures) and its endpoints. In the next step I created the models using Mongo and Mongoose, then tested saving and retrieving data from the database. After all the parts were working I created the routes I would need for full CRUD functionality. The last part I worked on was the styling utilizing the Bootstrap library, Angular UI, and CSS. 
+And finally I deployed to Heroku using mLab as my database service.
+
+
+ # Wireframes & User Story: 
+ I wanted to solve a problem that I encounter every summer. My garden always seems to grow too much of one thing and I'm always looking to share and trade my artichokes, blueberries and grapes. 
+ Wireframe: https://ninjamock.com/s/TSWFD
 
 # Install Instructions:
 1. npm install
