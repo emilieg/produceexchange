@@ -141,7 +141,7 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
     AllPostsDelete.delete({id: id}, function success(data){
       console.log("postIdx is: ", postIdx);
       console.log(data);
-
+      //add here a check to make sure only the owner of the post can delete it
       var index = $scope.posts.indexOf(post);
       $scope.posts.splice(index, 1);
       $scope.searchTerm = '';
@@ -169,3 +169,5 @@ scmanagerApp.controller('NavCtrl', ['$scope', '$state', function($scope, $state)
     $state.go('allposts', {query: term})
   }
 }]);
+
+
