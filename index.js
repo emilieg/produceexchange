@@ -16,9 +16,7 @@ mongoose.connect('mongodb://localhost/produce');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
-app.use('/api/post', require('./controllers/api_controller.js'));
-app.use('/api/allposts', require('./controllers/api_controller.js'));
-app.use('/api/users', require('./controllers/api_controller.js'));
+
 
 // The following section implents JWT authentication:
 var secret = "produceexchangejwtsecret";
@@ -37,6 +35,9 @@ app.use(function (err, req, res, next) {
     });
   }
 });
+app.use('/api/post', require('./controllers/api_controller.js'));
+app.use('/api/allposts', require('./controllers/api_controller.js'));
+app.use('/api/users', require('./controllers/api_controller.js'));
 
 //Routes
 app.post('/api/authenticate', function(req, res) {
