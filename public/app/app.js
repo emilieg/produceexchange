@@ -1,5 +1,6 @@
 //initialize the app here and place all the app routing and $stateProvider and .state here
 var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
+  // 'ngFlash',
   'ui.bootstrap',
   'ngRoute',
   'cloudinary',
@@ -7,14 +8,39 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   'photoAlbumServices',
   'ngAnimate'])
 
-.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-  $urlRouterProvider.otherwise('/');
+.config(['$stateProvider',
+  '$urlRouterProvider',
+  '$locationProvider',
+  '$httpProvider',
+  function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  
+  $urlRouterProvider.otherwise(function($injector) {
+  var $state = $injector.get('$state');
+  $state.go('404');
+});
+  // This intercepts every $http request and runs the AuthInterceptor service
+  // along with it.  AuthInterceptor adds an auth token to the http header.
+  // $httpProvider.interceptors.push('AuthInterceptor');
+
 
   $stateProvider
   .state('home', {
     url: '/',
     templateUrl: '/app/views/home.html',
     controller: 'HomeCtrl'
+  })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'app/views/userSignup.html',
+    controller: 'SignupCtrl'
+  })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'app/views/userLogin.html',
+    controller: 'LoginCtrl'
+  })
+  .state('404', {
+    templateUrl: 'app/views/404.html'
   })
   .state('about', {
     url: '/about',
@@ -29,7 +55,7 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
     url: '/allposts?q=:query',
     templateUrl: '/app/views/allposts.html',
     controller: 'AllPostCtrl',
-  })
+  });
 
 
   $locationProvider.html5Mode({enabled: true})
