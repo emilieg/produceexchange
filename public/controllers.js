@@ -171,3 +171,39 @@ scmanagerApp.controller('NavCtrl', ['$scope', '$state', function($scope, $state)
 }]);
 
 
+scmanagerApp.controller('SignupCtrl', [
+  '$scope', 
+  '$http', 
+  '$location', 
+  'Auth', 
+  'Flash', 
+  function($scope, $http, $location, Auth, Flash) {
+    $scope.user = {
+      email: '',
+      password: ''
+    };
+    $scope.userSignup = function() {
+      $http.post('api/users', $scope.user).then(function success(res) {
+        Auth.saveToken(res.data.token);
+        $location.path('/');
+      }, function error(res) {
+        Flash.create('warning', 'Signup failure: ' + res.data.message, 0, null, true);
+      });
+  }
+}]);
+
+scmanagerApp.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', 'Flash', 
+  function($scope, $http, $location, Auth, Flash) {
+    $scope.user = {
+      email: '',
+      password: ''
+    };
+    $scope.userLogin = function() {
+      $http.post('/api/authenticate', $scope.user).then(function success(res) {
+        Auth.saveToken(res.data.token);
+        $location.path('/');
+      }, function error(res) {
+        Flash.create('warning', 'Login failure: ' + res.data.message, 0, null, true);
+      });
+    }
+}]);
