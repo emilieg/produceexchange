@@ -3,9 +3,17 @@ www.produceex.herokuapp.com
 
 A community based application that helps neighbors trade homegrown fruits and vegetables. 
 
+# Screenshots:
+
+![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583662/Screen_Shot_2016-06-10_at_9.38.30_AM_clc5wl.png "Landing page")
+![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583652/Screen_Shot_2016-06-10_at_9.39.25_AM_ffzx7u.png "create a post")
 
 # Technology:
+<<<<<<< HEAD
 _MEAN stack application utilizing_: 
+=======
+MEAN stack application utilizing: 
+>>>>>>> d218fac94351c423e40c182694f3f3119ff2000f
 * *Mongo* and *Mongoose*, database 
 * *Express*, back-end app
 * *Angular*, front-end framework 
@@ -16,19 +24,10 @@ _MEAN stack application utilizing_:
 I started by creating wireframes and the user story. After the user story was finished I build the basic skeleton of the app using Node.js and installed and imported all needed dependencies/modules (Express, Router, bodyParser, path, Mongoose and Angular). After I tested that Angular and all other dependencies were working I proceeded to integrate the Cloudinary API (to upload pictures) and its endpoints. In the next step I created the models using Mongo and Mongoose, then tested saving and retrieving data from the database. After all the parts were working I created the routes I would need for full CRUD functionality. The last part I worked on was the styling utilizing the Bootstrap library, Angular UI, and CSS. 
 And finally I deployed to Heroku using mLab as my database service.
 
-
- # Wireframes & User Story: 
- I wanted to solve a problem that I encounter every summer. My garden always seems to grow too much of one thing and I'm always looking to share and trade my artichokes, blueberries and grapes. 
-
-
-# Wireframes:
+# Wireframes & User Story:
+ I wanted to solve a problem that I encounter every summer. My garden always seems to grow too much of one thing and I'm always looking to share and trade my artichokes, blueberries and grapes. My neighborhood has an active facebook blog where we are able to share things we no longer need or post any neighborhood alerts. This app is specifically for produce items only and gives users the choice to check and see what's available whenever they want (without getting daily alerts for everything in the facebook group).
 
 https://ninjamock.com/s/TSWFD
-# Screenshots:
-
-![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583662/Screen_Shot_2016-06-10_at_9.38.30_AM_clc5wl.png "Landing page")
-![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583652/Screen_Shot_2016-06-10_at_9.39.25_AM_ffzx7u.png "create a post")
-
 
 # Install Instructions:
 1. npm install
