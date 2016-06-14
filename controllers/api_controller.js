@@ -4,7 +4,8 @@
 var express= require('express');
 var router = express.Router();
 var Post = require('../models/post');
-
+var User = require ('../models/user');
+var jwt = require('jsonwebtoken');
 //this is same as /post
 router.route('/')
   .post(function(req, res) {
