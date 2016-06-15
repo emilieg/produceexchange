@@ -102,7 +102,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
   }]);
 
 
-var scmanagerApp = angular.module('scmanagerApp')
+var scmanagerApp = angular.module('scmanagerApp');
 
 scmanagerApp.controller('HomeCtrl', function() {
 
@@ -136,20 +136,7 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
         console.log(data);
       })
 
-  $scope.claim = function(id, postIdx, post) {
-    console.log(id, postIdx);
-    AllPostsDelete.delete({id: id}, function success(data){
-      console.log("postIdx is: ", postIdx);
-      console.log(data);
-      //add here a check to make sure only the owner of the post can delete it
-      var index = $scope.posts.indexOf(post);
-      $scope.posts.splice(index, 1);
-      $scope.searchTerm = '';
 
-    }, function error(data) {
-
-    })
-  }
 
     $scope.matchesSearch = function(value, index, array) {
       if ($scope.searchTerm === '') {;
@@ -160,11 +147,15 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
       } 
         return false;
     }
-
-
 }]);
 
-scmanagerApp.controller('NavCtrl', ['$scope', '$state', function($scope, $state) {
+scmanagerApp.controller('NavCtrl', ['$scope','$state', 'Auth', function($scope, $state, Auth) {
+  $scope.Auth = Auth;
+
+  $scope.logout = function(){
+    Auth.removeToken();
+  }
+
   $scope.searchPost = function(term) {
     $state.go('allposts', {query: term})
   }
@@ -183,9 +174,10 @@ scmanagerApp.controller('SignupCtrl', [
       password: ''
     };
     $scope.userSignup = function() {
-      $http.post('api/users', $scope.user).then(function success(res) {
+      $http.post('/api/users', $scope.user).then(function success(res) {
         Auth.saveToken(res.data.token);
-        $location.path('/');
+        console.log("token ", res.data.token);
+        $location.path('/post');
       }, function error(res) {
         Flash.create('warning', 'Signup failure: ' + res.data.message, 0, null, true);
       });
@@ -201,9 +193,36 @@ scmanagerApp.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', 'F
     $scope.userLogin = function() {
       $http.post('/api/authenticate', $scope.user).then(function success(res) {
         Auth.saveToken(res.data.token);
-        $location.path('/');
+        console.log(res.data.token);
+        $location.path('/post');
       }, function error(res) {
         Flash.create('warning', 'Login failure: ' + res.data.message, 0, null, true);
       });
     }
 }]);
+
+scmanagerApp.controller('UserPostCtrl',['$scope', 'AllPostsDelete', 'UserPosts', function($scope, AllPostsDelete, UserPosts){
+
+  UserPosts.query(function success(data) {
+    $scope.posts = data
+    console.log(data)
+  }, function error(data) {
+
+  })
+
+  $scope.claim = function(id, postIdx, post) {
+    console.log(id, postIdx);
+    AllPostsDelete.delete({id: id}, function success(data){
+      console.log("postIdx is: ", postIdx);
+      console.log(data);
+      //add here a check to make sure only the owner of the post can delete it
+      var index = $scope.posts.indexOf(post);
+      $scope.posts.splice(index, 1);
+      $scope.searchTerm = '';
+
+    }, function error(data) {
+
+    })
+  }
+
+}])

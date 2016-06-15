@@ -14,10 +14,12 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   '$httpProvider',
   function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
   
+    $httpProvider.interceptors.push('AuthInterceptor')
+
   $urlRouterProvider.otherwise(function($injector) {
-  var $state = $injector.get('$state');
-  $state.go('404');
-});
+    var $state = $injector.get('$state');
+    $state.go('404');
+  });
   // This intercepts every $http request and runs the AuthInterceptor service
   // along with it.  AuthInterceptor adds an auth token to the http header.
   // $httpProvider.interceptors.push('AuthInterceptor');
@@ -55,6 +57,11 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
     url: '/allposts?q=:query',
     templateUrl: '/app/views/allposts.html',
     controller: 'AllPostCtrl',
+  })
+  .state('userpost', {
+    url: '/myposts',
+    templateUrl: '/app/views/userpost.html',
+    controller: 'UserPostCtrl'
   });
 
 
@@ -68,6 +75,13 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
       .set("upload_preset", "zdqjbzoa");
 }]);
 
+
+scmanagerApp.run(['$rootScope', 'Flash', function($rootScope, Flash) {
+  $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams) {
+      Flash.clear()
+  });
+}]);
 
 
 

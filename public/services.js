@@ -22,16 +22,20 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
 }])
 
 .factory('AllPosts', ['$resource', function($resource) {
-  return $resource('/api/allposts')
+  return $resource('/api/post');
+}])
+
+.factory('UserPosts', ['$resource', function($resource) {
+  return $resource('/api/post/user')
 }])
 
 .factory('AllPostsDelete', ['$resource', function($resource) {
-  return $resource('/api/allposts/:id', {id: '@id'} 
+  return $resource('/api/post/:id', {id: '@id'} 
   )
 }])
 
 .factory('FindPost', ['$resource', function($resource){
-  return $resource('/api/allposts/:id/search', {id: '@id'}, {
+  return $resource('/api/post/:id/search', {id: '@id'}, {
     query:  {method:'GET', params: {id: '@id'}, isArray:true}
   });
 }])
@@ -53,7 +57,7 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
     },
     currentUser: function() {
       if (this.isLoggedIn()) {
-        token = this.getToken()
+        var token = this.getToken()
         try {
           var tokenHeader = token.split('.')[0];
           var tokenPayload = token.split('.')[1];
@@ -75,15 +79,20 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
     // If querying other APIs, add URLs to this array.
     // Star Wars API added as example.
   var excludedEndpoints = [
-    'https://swapi.co/api/films'
+    'https://api.cloudinary.com/'
   ];
 
   return {
     request: function(config) {
       var token = Auth.getToken();
-      var excludedEndpoint = excludedEndpoints.indexOf(config.url) > -1;
 
-      if (token && !excludedEndpoint) {
+      var exclude = false
+      excludedEndpoints.forEach(function(endpoint){
+        if(config.url.indexOf(endpoint)>-1)
+          exclude = true
+      })
+
+      if (token && !exclude) {
         config.headers.Authorization = 'Bearer ' + token;
       }
       return config;

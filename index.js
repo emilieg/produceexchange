@@ -26,6 +26,11 @@ var secret = "produceexchangejwtsecret";
 app.use('/api/users', expressJWT({secret: secret})
   .unless({path: ['/api/users'], method: 'post'}));
 
+app.use('/api/post', expressJWT({secret: secret})
+  .unless({method: 'get'}));
+
+app.use('/api/post/user', expressJWT({secret: secret}))
+
 // Check every error occuring on the server for name "UnauthorizedError" and 
 // attach a more specific message
 app.use(function (err, req, res, next) {
@@ -35,9 +40,10 @@ app.use(function (err, req, res, next) {
     });
   }
 });
+
 app.use('/api/post', require('./controllers/api_controller.js'));
-app.use('/api/allposts', require('./controllers/api_controller.js'));
-app.use('/api/users', require('./controllers/api_controller.js'));
+// app.use('/api/allposts', require('./controllers/api_controller.js'));
+app.use('/api/users', require('./controllers/user.js'));
 
 //Routes
 app.post('/api/authenticate', function(req, res) {

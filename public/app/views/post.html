@@ -17,23 +17,7 @@
        <span class="input-group-addon"><i class="glyphicon glyphicon-info-sign"></i></span>
        <textarea type="text" ng-model="post.description" class="form-control"></textarea>
      </div>
-     <label>Contact Name</label>
-     <div class="input-group">    
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input type="text" ng-model="post.contact_name" class="form-control">
-    </div>
-    <label>Email</label>
-    <div class="input-group">    
-      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-      <input type="text" ng-model="post.email" class="form-control">
-    </div>   
-    <!--  <button class="btn btn-primary submit post-submit" type="submit"> Submit </button> -->
-    <!-- </form> -->
-    <!--   </div>  -->
 
-    <!-- This is the file upload  -->
-    <!-- <div class="col-xs-12 col-md-6"> -->
-    <!-- <div class="input-group input-group-lg"> -->
   <div id="direct_upload" 
     ngf-drop="uploadFiles($files)"
     ngf-drag-over-class="dragOverClass($event)"

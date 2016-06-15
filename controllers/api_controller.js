@@ -2,26 +2,39 @@
 //this API controller interacts with the database
 
 var express= require('express');
-var router = express.Router();
 var Post = require('../models/post');
 var User = require ('../models/user');
 var jwt = require('jsonwebtoken');
+var router = express.Router();
 //this is same as /post
 router.route('/')
   .post(function(req, res) {
-    console.log("req: ", req.body);
+    req.body.user = req.user._doc._id;
+
     Post.create(req.body, function(err, mypost) {
-      console.log(err)
-      console.log("mypost: "+ mypost);
+      // console.log(req.user)
       if (err) return res.status(500).send(err);
-      res.send(mypost);
+      // console.log(req.user._doc.posts)
+      // req.user._doc.posts.push(mypost)
+      // console.log(req.user._doc.posts)
+      User.findOneAndUpdate({_id:req.user._doc._id},{$push:{posts:mypost}},function(err, user){
+        console.log(user)
+        res.send(mypost);
+      })
     });
   });
 
+router.route('/user')
+  .get(function(req,res) {
+    Post.find({user: req.user._doc._id}).populate('user').exec(function(err,posts) {
+      if(err) return res.status(500).send(err);
+      res.send(posts);
+    })
+  })
 
 router.route('/')
   .get(function(req, res) {
-    Post.find(function(err, posts) {
+    Post.find().populate('user').exec(function(err, posts) {
       if(err) return res.status(500).send(err);
       res.send(posts);
     })
