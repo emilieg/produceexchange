@@ -1,15 +1,18 @@
 
 <div class="row">
   <div class="col-sm-12 col-md-12">
-  <div class="col-sm-3"ng-repeat="post in posts | filter: matchesSearch track by post._id" >
-    <div class="thumbnail">
-      <img ng-src="{{post.secure_url}}" alt="{{post.title}}" class="harvest-img">
-      <div class="caption">
-        <h3>{{post.title}}</h3>
-        <p>{{post.description}}</p>
-        <p><a href="mailto:{{post.user.email}}?Subject={{post.title}}" class="btn btn-default" role="button">Email</a></p>
+  <div ng-repeat="post in posts | filter: matchesSearch track by post._id">
+    <div class="col-sm-3">
+      <div class="thumbnail">
+        <img ng-src="{{post.secure_url}}" alt="{{post.title}}" class="harvest-img">
+        <div class="caption">
+          <h3>{{post.title}}</h3>
+          <p>{{post.description}}</p>
+          <p><a href="mailto:{{post.user.email}}?Subject={{post.title}}" class="btn btn-default" role="button">Email</a></p>
+        </div>
       </div>
     </div>
+    <div class="clearfix" ng-if="$index%4===3"></div>
   </div>
 </div>
 

@@ -27,7 +27,7 @@ app.use('/api/users', expressJWT({secret: secret})
   .unless({path: ['/api/users'], method: 'post'}));
 
 app.use('/api/post', expressJWT({secret: secret})
-  .unless({method: 'get'}));
+  .unless({method: ['GET']}));
 
 app.use('/api/post/user', expressJWT({secret: secret}))
 

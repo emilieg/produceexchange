@@ -24,7 +24,8 @@
         <li><a href="post">Share</a></li>
         <li><a href="/signup" ng-hide="Auth.isLoggedIn()">Signup</a></li>
         <li><a href="/login" ng-hide="Auth.isLoggedIn()">Login</a></li>
-        <li><a href="/myposts" ng-show="Auth.isLoggedIn()">{{Auth.currentUser().email}}</a></li>
+        <li><a href="/myposts" ng-show="Auth.isLoggedIn()">My Posts</a></li>
+        <li><a href="#" ng-show="Auth.isLoggedIn()">{{Auth.currentUser().email}}</a></li>
         <li><a href="#" ng-click="logout()" ng-show="Auth.isLoggedIn()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

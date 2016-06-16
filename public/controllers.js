@@ -15,9 +15,11 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
                                                      'cloudinary',
                                                      'PostsAPI',
                                                      'AllPosts',
+                                                     'Flash',
+                                                     'Auth',
                                                      
   /* Uploading with Angular File Upload */
-  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary, PostsAPI, AllPosts) {
+  function($scope, $rootScope, $routeParams, $location, $upload, cloudinary, PostsAPI, AllPosts, Flash, Auth) {
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
     //$scope.$watch('files', function() {
@@ -98,6 +100,9 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
       });
     };
 
+if(!Auth.isLoggedIn()){
+  Flash.create('warning', 'You must be logged in to make a post.', 0, null, true);  
+}
 
   }]);
 
