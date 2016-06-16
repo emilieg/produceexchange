@@ -70,8 +70,10 @@ a {
   color: #555;
 }
 .site-info {
-  background: rgba(255,255, 255, 0.3);
   font-weight: bold;
+  text-shadow: #444 3px 3px 6px;
+  color: white;
+  margin-top: 50px;
 
 }
 
@@ -84,7 +86,7 @@ a {
 }
 
 .cta-btn {
-  margin-top: 80px;
+  margin-top: 200px;
   margin-right: 15px;
   margin-left: 15px;
   border: 1px solid #ffffff;
@@ -104,6 +106,16 @@ a {
   margin-top: 50px; 
   float: right;
   background-color: #d7ec6c;  
+  box-shadow: #444 1px 1px 1px;
+}
+
+.signup {
+  background-color: #d7ec6c;
+  box-shadow: #444 1px 1px 1px;
+}
+
+.login {
+  background-color: #d7ec6c;
   box-shadow: #444 1px 1px 1px;
 }
 
