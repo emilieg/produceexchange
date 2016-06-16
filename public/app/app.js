@@ -33,7 +33,7 @@ var scmanagerApp = angular.module('scmanagerApp', ['ui.router',
   })
   .state('signup', {
     url: '/signup',
-    templateUrl: 'app/views/userSignup.html',
+    templateUrl: 'app/views/userSignUp.html',
     controller: 'SignupCtrl'
   })
   .state('login', {
