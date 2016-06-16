@@ -64,7 +64,6 @@ app.post('/api/authenticate', function(req, res) {
 });
 
 app.get('/*', function(req, res) {
-  console.log("hello");
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
