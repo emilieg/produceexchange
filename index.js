@@ -9,14 +9,12 @@ var Post = require('./models/post');
 var User = require('./models/user');
 var app = express();
 
-// mongoose.connect('mongodb://'+process.env.MONGO_USER+':'+process.env.MONGO_PASS+'@ds011314.mlab.com:11314/produce');
-mongoose.connect('mongodb://localhost/produce');
-
+mongoose.connect('mongodb://'+process.env.MONGO_USER+':'+process.env.MONGO_PASS+'@ds011314.mlab.com:11314/produce');
+// mongoose.connect('mongodb://localhost/produce');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(__dirname + '/public'));
-
 
 // The following section implents JWT authentication:
 var secret = "produceexchangejwtsecret";
