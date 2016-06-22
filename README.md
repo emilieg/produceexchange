@@ -1,5 +1,5 @@
 # Produce Exchange
-www.produceex.herokuapp.com
+https://produceex.herokuapp.com/
 
 A community based application that helps neighbors trade homegrown fruits and vegetables. 
 
