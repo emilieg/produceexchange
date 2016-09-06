@@ -18,7 +18,6 @@ router.route('/')
       // req.user._doc.posts.push(mypost)
       // console.log(req.user._doc.posts)
       User.findOneAndUpdate({_id:req.user._doc._id},{$push:{posts:mypost}},function(err, user){
-        console.log(user)
         res.send(mypost);
       })
     });
@@ -45,7 +44,7 @@ router.route('/:id')
     Post.findByIdAndRemove(req.params.id, function(err) {
       if (err) return res.status(500).send(err);
       res.send({'message': 'success'});
-      console.log(req.params.id);
+      // console.log(req.params.id);
     });
   });
 
@@ -53,7 +52,7 @@ router.route('/:id')
    .get(function(req, res) {
       Post.find({title: req.params.id}, function(err, post) {
         if (err) return res.status(500).send(err);
-        console.log("post: ", post);
+        // console.log("post: ", post);
         res.send(post);
       });
   })

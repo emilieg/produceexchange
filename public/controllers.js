@@ -46,8 +46,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
             $rootScope.photos.push(data);
             $scope.fileUrl = file.result.secure_url;
             $scope.public_id = file.result.public_id;
-            console.log("Secure_url: " + file.result.secure_url);
-            console.log("Public_id: " + file.result.public_id);
           }).error(function (data, status, headers, config) {
             file.result = data;
           });
@@ -91,12 +89,10 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
         public_id: $scope.public_id, 
         secure_url: $scope.fileUrl,
       };
-      console.log("newPost: ", newPost);
 
       PostsAPI.save(newPost, function success(data) {
         $location.path('/allposts');
       }, function error(data) {
-        console.log(data);
       });
     };
 
@@ -121,7 +117,6 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
                                         'AllPostsDelete',
                                         'FindPost',
   function($q, $scope, $stateParams, $routeParams, AllPosts, AllPostsDelete, FindPost ) {
-    console.log("query:", $stateParams.query);
     $scope.searchTerm = ''
     if ($stateParams.query)  {
       $scope.searchTerm = $stateParams.query
@@ -129,7 +124,6 @@ scmanagerApp.controller('AllPostCtrl', ['$q',
 
     AllPosts.query(function success(data) {
       $scope.posts = data;
-      console.log("$scope.posts", $scope.posts);
       $scope.slides = [];
       for (var i=0; i < $scope.posts.length; i ++) {
         if ($scope.posts[i].secure_url) {
@@ -181,7 +175,6 @@ scmanagerApp.controller('SignupCtrl', [
     $scope.userSignup = function() {
       $http.post('/api/users', $scope.user).then(function success(res) {
         Auth.saveToken(res.data.token);
-        console.log("token ", res.data.token);
         $location.path('/post');
       }, function error(res) {
         Flash.create('warning', 'Signup failure: ' + res.data.message, 0, null, true);
@@ -198,7 +191,6 @@ scmanagerApp.controller('LoginCtrl', ['$scope', '$http', '$location', 'Auth', 'F
     $scope.userLogin = function() {
       $http.post('/api/authenticate', $scope.user).then(function success(res) {
         Auth.saveToken(res.data.token);
-        console.log(res.data.token);
         $location.path('/post');
       }, function error(res) {
         Flash.create('warning', 'Login failure: ' + res.data.message, 0, null, true);
@@ -210,16 +202,12 @@ scmanagerApp.controller('UserPostCtrl',['$scope', 'AllPostsDelete', 'UserPosts',
 
   UserPosts.query(function success(data) {
     $scope.posts = data
-    console.log(data)
   }, function error(data) {
 
   })
 
   $scope.claim = function(id, postIdx, post) {
-    console.log(id, postIdx);
     AllPostsDelete.delete({id: id}, function success(data){
-      console.log("postIdx is: ", postIdx);
-      console.log(data);
       //add here a check to make sure only the owner of the post can delete it
       var index = $scope.posts.indexOf(post);
       $scope.posts.splice(index, 1);
