@@ -1,5 +1,5 @@
 # Produce Exchange
-www.produceex.herokuapp.com
+https://produceex.herokuapp.com/
 
 A community based application that helps neighbors trade homegrown fruits and vegetables. 
 
@@ -9,11 +9,9 @@ A community based application that helps neighbors trade homegrown fruits and ve
 ![alt text](http://res.cloudinary.com/dia36odnd/image/upload/v1465583652/Screen_Shot_2016-06-10_at_9.39.25_AM_ffzx7u.png "create a post")
 
 # Technology:
-<<<<<<< HEAD
-_MEAN stack application utilizing_: 
-=======
+
 MEAN stack application utilizing: 
->>>>>>> d218fac94351c423e40c182694f3f3119ff2000f
+
 * *Mongo* and *Mongoose*, database 
 * *Express*, back-end app
 * *Angular*, front-end framework 
