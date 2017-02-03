@@ -3,6 +3,7 @@
   <div class="col-sm-12 col-md-12">
   <div ng-repeat="post in posts | filter: matchesSearch track by post._id">
     <div class="col-sm-3">
+    <div ng-show="!matchesSearch">Sorry, we couldn't find that.</div>
       <div class="thumbnail">
         <img ng-src="{{post.secure_url}}" alt="{{post.title}}" class="harvest-img">
         <div class="caption">

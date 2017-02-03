@@ -14,7 +14,7 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
     });
   }])
 
-//looks like this service retrieves the pictures from cloudinary
+//this service retrieves the pictures from cloudinary
 
 
 .factory('PostsAPI', ['$resource', function($resource) {
@@ -77,7 +77,6 @@ photoAlbumServices.factory('album', ['$rootScope', '$resource', 'cloudinary',
 // listed in excludedEndpoints[].
 .factory('AuthInterceptor', ['Auth', function(Auth) {
     // If querying other APIs, add URLs to this array.
-    // Star Wars API added as example.
   var excludedEndpoints = [
     'https://api.cloudinary.com/'
   ];

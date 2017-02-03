@@ -22,7 +22,6 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
   function($scope, $rootScope, $routeParams, $location, $upload, cloudinary, PostsAPI, AllPosts, Flash, Auth) {
     var d = new Date();
     $scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
-    //$scope.$watch('files', function() {
     $scope.uploadFiles = function(files){
       $scope.files = files;
       if (!$scope.files) return;
@@ -97,7 +96,7 @@ photoAlbumControllers.controller('photoUploadCtrl', ['$scope',
     };
 
 if(!Auth.isLoggedIn()){
-  Flash.create('warning', 'You must be logged in to make a post.', 0, null, true);  
+  Flash.create('warning', 'You must be logged in to make a post.', 0, null, true);
 }
 
   }]);
